@@ -1,7 +1,6 @@
 "use server";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
-import { revalidatePath } from "next/cache";
 
 export async function addNewPost(formData: FormData) {
   const title = formData.get("title") as string;
@@ -13,7 +12,6 @@ export async function addNewPost(formData: FormData) {
 
   try {
     await addDoc(collection(firestore, "posts"), { title, text });
-    revalidatePath('/')
   } catch (error) {
     console.error("Failed to add new post:", error);
     throw error;
