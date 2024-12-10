@@ -1,11 +1,11 @@
 "use server";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { firestore } from "@/lib/firebase";
 import { revalidatePath } from "next/cache";
 
 export async function addNewPost(formData: FormData) {
-  const title = formData.get("title") as string;
-  const text = formData.get("text") as string;
+  const title = formData.get("title");
+  const text = formData.get("text");
 
   if (!title || !text) {
     throw new Error("Both title and text are required.");
@@ -17,18 +17,5 @@ export async function addNewPost(formData: FormData) {
   } catch (error) {
     console.error("Failed to add new post:", error);
     throw error;
-  }
-
-}
-
-export async function fetchPostData() {
-  try {
-    const postsRef = collection(firestore, "posts");
-    const querySnapshot = await getDocs(postsRef);
-
-    return querySnapshot.docs.map((doc) => doc.data());
-  } catch (error) {
-    console.error("Error fetching page data:", error);
-    return [];
   }
 }

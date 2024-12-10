@@ -1,14 +1,7 @@
-import { fetchPostData } from "@/actions/firebaseActions";
+import { fetchPostData } from "@/get/getData";
 
 async function Posts() {
-  let posts = [];
-
-  try {
-    posts = await fetchPostData();
-  } catch (error) {
-    console.error("Failed to fetch posts:", error);
-    return <p>Error loading posts.</p>;
-  }
+  const posts = await fetchPostData();
 
   return (
     <div>
