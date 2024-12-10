@@ -1,11 +1,11 @@
 import AddPost from "@/components/AddPost";
-import Posts from "@/components/Posts";
 
-export default function Home() {
+function Page() {
   return (
     <main>
       <AddPost/>
-      <Posts/>
     </main>
   );
 }
+
+export default Page;
