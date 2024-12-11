@@ -20,7 +20,7 @@ function AddPost() {
   };
 
   return (
-    <form action={addNewPost} className={`
+    <form className={`
       flex flex-col justify-center
       bg-[#c9c9c9] p-2 rounded-md mt-10
     `}>
@@ -43,10 +43,10 @@ function AddPost() {
       <button 
         disabled={newPost.title === "" || newPost.text === ""}
         onClick={() => {
-          dispatch(addPostR(newPost))
-          setNewPost({title: "", text: ""})
+          addNewPost(newPost);
+          dispatch(addPostR(newPost));
+          setNewPost({title: "", text: ""});
         }}
-        type="submit" 
         className={`bg-[#4e4eff] rounded-md`}
       >Add</button>
     </form>

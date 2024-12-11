@@ -4,9 +4,9 @@ import { firestore } from "@/lib/firebase";
 import { revalidatePath } from "next/cache";
 
 /** POST (add a new post to the firstore post collection) */
-export async function addNewPost(formData: FormData) {
-  const title = formData.get("title");
-  const text = formData.get("text");
+export async function addNewPost(post: {title: string, text: string}) {
+  const title = post.title;
+  const text = post.text;
 
   if (!title || !text) {
     throw new Error("Both title and text are required.");
