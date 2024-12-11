@@ -19,7 +19,7 @@ export async function addNewPost(post: {title: string, text: string}) {
 
     await setDoc(docRef, {id, title, text, createdAt})
 
-    revalidatePath('/')
+    revalidatePath('/crud')
   } catch (error) {
     console.error("Failed to add new post:", error);
     throw error;
@@ -37,7 +37,7 @@ export async function editPost(post: { title: string; text: string, id: string }
 
     await setDoc(postRef, { ...post }, { merge: true });
 
-    revalidatePath('/');
+    revalidatePath('/crud');
   } catch (error) {
     console.error("Failed to edit the post:", error);
     throw error;
@@ -50,7 +50,7 @@ export async function deletePost(id: string) {
     const postRef = doc(firestore, "posts", id);
     await deleteDoc(postRef);
 
-    revalidatePath('/')
+    revalidatePath('/crud')
   } catch (error) {
     console.error("Failded to delete the post", error);
     throw error;

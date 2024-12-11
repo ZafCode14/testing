@@ -1,14 +1,14 @@
-import AddPost from "@/components/AddPost";
-import Posts from "@/components/Posts";
-import { fetchPostData } from "@/get/getData";
+import Link from "next/link";
 
 export default async function Home() {
-  const posts = await fetchPostData();
-
   return (
-    <main className={`w-full flex flex-col items-center justify-center`}>
-      <AddPost/>
-      <Posts posts={posts}/>
+    <main className={`w-full flex`}>
+      <Link href={"/crud"} className={`
+        flex justify-center items-center
+        w-[50%] h-[300px] bg-[gray]
+      `}>
+        <h1 className={`text-[40px] font-bold`}>CRUD</h1>
+      </Link>
     </main>
   );
 }

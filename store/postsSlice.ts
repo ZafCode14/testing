@@ -18,6 +18,7 @@ const postsSlice = createSlice({
       const posts = action.payload;
       state.value = posts;
     },
+
     // Add a post to the state
     addPostR: (state, action) => {
       const post = action.payload;
@@ -27,17 +28,13 @@ const postsSlice = createSlice({
     // Edit a post by index
     editPostR: (state, action) => {
       const { index, post } = action.payload;
-      if (index >= 0 && index < state.value.length) {
-        state.value[index] = { ...state.value[index], ...post };
-      }
+      state.value[index] = { ...state.value[index], ...post };
     },
 
     // Delete a post by index
     deletePostR: (state, action) => {
       const index = action.payload;
-      if (index >= 0 && index < state.value.length) {
-        state.value.splice(index, 1);
-      }
+      state.value.splice(index, 1);
     }
   }
 });

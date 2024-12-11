@@ -20,7 +20,6 @@ function Post({ index }: PostProp) {
   })
 
   useEffect(() => {
-    setIsEdit(false);
     setEditedPost({
       title: post.title,
       text: post.text,
@@ -46,7 +45,7 @@ function Post({ index }: PostProp) {
                     setEditedPost((prev) => ({ ...prev, title: e.target.value }))
                   }
                 />
-              <input
+                <textarea
                   placeholder="Enter the text"
                   className={`rounded-md`}
                   value={editedPost.text}
@@ -86,6 +85,7 @@ function Post({ index }: PostProp) {
           {/** Delete button */}
           <button 
             onClick={() => {
+              setIsEdit(false);
               dispatch(deletePostR(index))
               deletePost(post.id)
             }} 
