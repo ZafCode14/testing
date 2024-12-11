@@ -42,7 +42,10 @@ function AddPost() {
       />
       <button 
         disabled={newPost.title === "" || newPost.text === ""}
-        onClick={() => dispatch(addPostR(newPost))}
+        onClick={() => {
+          dispatch(addPostR(newPost))
+          setNewPost({title: "", text: ""})
+        }}
         type="submit" 
         className={`bg-[#4e4eff] rounded-md`}
       >Add</button>
