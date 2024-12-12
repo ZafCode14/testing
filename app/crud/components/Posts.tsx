@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setPostsR } from "@/store/postsSlice"
 import { RootState } from "@/store/store";
 import { useEffect } from "react";
-import { Loading } from "@/app/crud/components/loading";
+import { Loading } from "@/components/loading";
 
 type PostProps = {
   posts: PostType[]
